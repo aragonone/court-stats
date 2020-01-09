@@ -1,5 +1,4 @@
 import React from 'react'
-import Head from 'next/head'
 import { request } from 'graphql-request'
 import { fromWei, toBN, toWei } from 'web3-utils'
 
@@ -24,16 +23,11 @@ const Home = ({ jurors }) => {
         <li>Active ANJ: {formatTokenAmount(anjStaked)} ANJ</li>
         <li>ANT staked: {formatTokenAmount(antStaked)} ANT</li>
       </ul>
-      <p></p>
     </div>
   )
 }
 
-Home.getInitialProps = async () => {
-  const data = await request(endpoint, jurorsQuery)
-  console.log(data)
-  return data
-}
+Home.getInitialProps = () => request(endpoint, jurorsQuery)
 
 const decimalPlaces = toBN(toWei('0.01'))
 const formatTokenAmount = n => (parseFloat(fromWei(n)) * 100 / 100).toFixed(2)
