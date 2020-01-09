@@ -1,12 +1,7 @@
 import React from 'react'
-import { request } from 'graphql-request'
 import { fromWei, toBN, toWei } from 'web3-utils'
 
-const jurorsQuery = `{
-  jurors {
-    activeBalance
-  }
-}`
+import query from '../services/graphql'
 
 const endpoint = 'https://api.thegraph.com/subgraphs/name/aragon/aragon-court'
 const anjRate = 100
@@ -27,7 +22,13 @@ const Home = ({ jurors }) => {
   )
 }
 
-Home.getInitialProps = () => request(endpoint, jurorsQuery)
+Home.getInitialProps = () => (
+  query(`{
+    jurors {
+      activeBalance
+    }
+  }`)
+)
 
 const decimalPlaces = toBN(toWei('0.01'))
 const formatTokenAmount = n => (parseFloat(fromWei(n)) * 100 / 100).toFixed(2)
