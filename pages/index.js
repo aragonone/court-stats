@@ -19,7 +19,7 @@ const Home = ({ jurors }) => {
     <div>
       <h1>Aragon Court stats</h1>
       <ul>
-        <li>Total jurors: {jurors.length}</li>
+        <li>Jurors: {jurors.length}</li>
         <li>Active ANJ: {formatTokenAmount(anjStaked)} ANJ</li>
         <li>ANT staked: {formatTokenAmount(antStaked)} ANT</li>
       </ul>
