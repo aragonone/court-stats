@@ -4,11 +4,11 @@
   "private": true,
   "scripts": {
     "dev": "copy-aragon-ui-assets ./public && next dev",
-    "build": "ls -la node_modules && ls -la node_modules/@aragon && next build",
+    "build": "copy-aragon-ui-assets && npm  && next build",
     "start": "next start"
   },
   "dependencies": {
-    "@aragon/ui": "github:aragon/aragon-ui",
+    "aui-jorge": "^1.2.2",
     "graphql-request": "^1.8.2",
     "next": "9.1.7",
     "react": "16.12.0",

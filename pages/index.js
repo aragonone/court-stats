@@ -1,6 +1,6 @@
 import React from 'react'
 import Head from 'next/head'
-import { Main, Header, Split, Box, Button, Card, CardLayout, textStyle } from '@aragon/ui'
+import { Main, Header, Split, Box, Button, Card, CardLayout, textStyle } from 'aui-jorge'
 import { fromWei, toBN, toWei } from 'web3-utils'
 
 import query from '../services/graphql'
