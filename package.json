@@ -3,15 +3,18 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev",
-    "build": "next build",
+    "dev": "copy-aragon-ui-assets ./public && next dev",
+    "build": "copy-aragon-ui-assets ./public && next build",
     "start": "next start"
   },
   "dependencies": {
+    "@aragon/ui": "github:aragon/aragon-ui",
     "graphql-request": "^1.8.2",
     "next": "9.1.7",
     "react": "16.12.0",
     "react-dom": "16.12.0",
+    "styled-components": "^4.4.1",
+    "web3": "^1.2.4",
     "web3-utils": "^1.2.4"
   }
 }
