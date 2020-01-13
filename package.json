@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "copy-aragon-ui-assets ./public && next dev",
-    "build": "copy-aragon-ui-assets && npm  && next build",
+    "build": "copy-aragon-ui-assets ./public && next build",
     "start": "next start"
   },
   "dependencies": {
