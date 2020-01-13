@@ -3,7 +3,6 @@ import { fromWei, toBN, toWei } from 'web3-utils'
 
 import query from '../services/graphql'
 
-const endpoint = 'https://api.thegraph.com/subgraphs/name/aragon/aragon-court'
 const anjRate = 100
 
 const Home = ({ jurors }) => {
