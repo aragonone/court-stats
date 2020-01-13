@@ -7,6 +7,7 @@ import query from '../services/graphql'
 import { getContract } from '../services/web3'
 import tokenBalanceOfAbi from '../services/web3/abis/token-balanceof'
 
+import theme from '../theme'
 import { formatNumber } from '../utils/numbers'
 
 const ANT_ADDR =     '0x960b236A07cf122663c4303350609A66A7B288C0'
@@ -20,6 +21,8 @@ const Home = ({ jurors, antStaked, anjMovements }) => {
     .filter(({ type, createdAt }) => type === 'Activation' && createdAt >= yesterday)
     .reduce((acc, { amount }) => acc.add(toBN(amount)), toBN(0))
 
+  const getAnjClick = () => window.open("https://anj.aragon.org", "_blank")
+
   const StatCard = ({ title, amount, unit }) => (
     <Card width="100%">
       <div>
@@ -31,13 +34,13 @@ const Home = ({ jurors, antStaked, anjMovements }) => {
   )
 
   return (
-    <Main>
+    <Main theme={theme}>
       <Head>
         <title>Aragon Court stats</title>
       </Head>
       <Header
         primary="Aragon Court stats"
-        secondary={<Button mode="strong" label="See on Etherscan" />}
+        secondary={<Button mode="strong" label="Get ANJ" onClick={getAnjClick}/>}
       />
       <Split
         primary={
