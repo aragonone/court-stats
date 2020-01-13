@@ -1,7 +1,7 @@
 # See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 
 # aragon-ui
-public/aragon-ui
+# public/aragon-ui # TODO: ignore again when using aragonUI build from NPM
 
 # dependencies
 /node_modules
