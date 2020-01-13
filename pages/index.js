@@ -21,6 +21,9 @@ const Home = ({ jurors, antStaked, anjMovements }) => {
     .filter(({ type, createdAt }) => type === 'Activation' && createdAt >= yesterday)
     .reduce((acc, { amount }) => acc.add(toBN(amount)), toBN(0))
 
+  console.log(anjMovements
+    .filter(({ type, createdAt }) => type === 'Activation' && createdAt >= yesterday))
+
   const getAnjClick = () => window.open("https://anj.aragon.org", "_blank")
 
   const StatCard = ({ title, amount, unit }) => (
@@ -69,7 +72,7 @@ Home.getInitialProps = async () => {
   }`)
 
   const { anjmovements: anjMovements } = await query(`{
-    anjmovements {
+    anjmovements(orderBy:createdAt, orderDirection:desc) {
       juror {
         id
       },
