@@ -1,6 +1,6 @@
 import React from 'react'
 import Head from 'next/head'
-import { Main, Header, Split, Box, Button, Card, CardLayout, textStyle } from 'aui-jorge'
+import { Main, Header, Split, Box, Button, Card, CardLayout, LineChart, GU, useViewport } from 'aui-jorge'
 import { fromWei, toBN, toWei } from 'web3-utils'
 
 import query from '../services/graphql'
@@ -31,6 +31,15 @@ const Home = ({ jurors, antStaked, anjMovements }) => {
     </Card>
   )
 
+  const chart = {
+    labels: ['one', 'two', 'three'],
+    values: [0.1,0.2, 0.3]
+  }
+
+  const { width: vw } = useViewport()
+  console.log(vw, GU)
+  console.log(vw - 160 * GU)
+
   return (
     <Main theme={theme}>
       <Head>
@@ -49,6 +58,14 @@ const Home = ({ jurors, antStaked, anjMovements }) => {
               <StatCard title="Active tokens" amount={formatTokenAmount(anjStaked)} unit="ANJ"/>
               <StatCard title="24h activations" amount={formatTokenAmount(anjToday)} unit="ANJ"/>
             </CardLayout>
+            <LineChart
+              lines={[chart.values]}
+              springConfig={{ mass: 1, tension: 120, friction: 80 }}
+              label={index => chart.labels[index]}
+              width={vw - 80 * GU}
+              height={400}
+              color={() => theme.accent}
+            />
           </Box>
         }
         secondary={<Box heading="Activity">Coming soon™️</Box>}
