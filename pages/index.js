@@ -21,11 +21,6 @@ const Home = ({ jurors, antStaked, anjMovements }) => {
     .filter(({ type, createdAt }) => type === 'Activation' && createdAt >= yesterday)
     .reduce((acc, { amount }) => acc.add(toBN(amount)), toBN(0))
 
-  console.log(anjMovements
-    .filter(({ type, createdAt }) => type === 'Activation' && createdAt >= yesterday))
-
-  const getAnjClick = () => window.open("https://anj.aragon.org", "_blank")
-
   const StatCard = ({ title, amount, unit }) => (
     <Card width="100%">
       <div>
@@ -43,7 +38,7 @@ const Home = ({ jurors, antStaked, anjMovements }) => {
       </Head>
       <Header
         primary="Aragon Court stats"
-        secondary={<Button mode="strong" label="Get ANJ" onClick={getAnjClick}/>}
+        secondary={<Button mode="strong" label="Get ANJ" onClick={() => window.open("https://anj.aragon.org", "_blank")}/>}
       />
       <Split
         primary={
@@ -61,8 +56,6 @@ const Home = ({ jurors, antStaked, anjMovements }) => {
     </Main>
   )
 }
-
-
 
 Home.getInitialProps = async () => {
   const { jurors } = await query(`{
@@ -84,8 +77,6 @@ Home.getInitialProps = async () => {
 
   const ant = getContract(ANT_ADDR, tokenBalanceOfAbi)
   const antStaked = await ant.methods.balanceOf(PRESALE_ADDR).call()
-
-  console.log(anjMovements)
 
   return {
     jurors,
