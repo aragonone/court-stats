@@ -62,9 +62,8 @@ const Home = ({ jurors, antStaked, anjMovements }) => {
               lines={[chart.values]}
               springConfig={{ mass: 1, tension: 120, friction: 80 }}
               label={index => chart.labels[index]}
-              width={vw - 80 * GU}
-              height={400}
               color={() => theme.accent}
+              animDelay={250}
             />
           </Box>
         }

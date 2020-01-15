@@ -8,7 +8,7 @@
     "start": "next start"
   },
   "dependencies": {
-    "aui-jorge": "^1.2.2",
+    "aui-jorge": "^1.2.3",
     "graphql-request": "^1.8.2",
     "next": "9.1.7",
     "react": "16.12.0",
