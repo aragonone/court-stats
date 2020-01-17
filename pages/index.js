@@ -59,13 +59,14 @@ const Home = ({ jurors, antStaked, anjMovements }) => {
 
 Home.getInitialProps = async () => {
   const { jurors } = await query(`{
-    jurors {
+    jurors(first: 1000) {
+      id,
       activeBalance
     }
   }`)
 
   const { anjmovements: anjMovements } = await query(`{
-    anjmovements(orderBy:createdAt, orderDirection:desc) {
+    anjmovements(orderBy:createdAt, orderDirection:desc, first: 1000) {
       juror {
         id
       },
